@@ -8,24 +8,48 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Ciclo Sync</title>
 <style>
-  body{margin:0;min-height:100vh;background:#EEECEA;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Georgia,'Palatino Linotype',serif;padding:24px;box-sizing:border-box}
-  .logo{width:min(78vw,420px);height:auto;display:block}
-  .row{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;justify-content:center}
-  a.sphere{text-decoration:none;padding:14px 30px;border-radius:999px;font-size:17px;font-weight:700;letter-spacing:.04em;box-shadow:0 3px 10px rgba(42,36,32,.12)}
-  .eat{background:#BFE3A0;color:#2A2420}
-  .move{background:#F2A09B;color:#2A2420}
-  .soon{background:#DEDBD7;color:#9E9A96;padding:14px 22px;border-radius:999px;font-size:14px}
-  p{color:#6B6460;font-size:13px;margin-top:26px;text-align:center;font-style:italic}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:#EEECEA;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Georgia,'Palatino Linotype',serif;padding:24px}
+  .stage{position:relative;width:min(82vw,440px);aspect-ratio:1/1}
+  .stage img{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+  .zone{position:absolute;border-radius:50%;display:block;-webkit-tap-highlight-color:transparent;outline:none;transition:transform .12s ease, background .12s ease}
+  .zone:active{transform:scale(0.96);background:rgba(255,255,255,0.18)}
+  .zone:focus-visible{box-shadow:0 0 0 3px #5B3FA6}
+  /* generous overlapping hit-regions matching each petal's position */
+  .z-eat   { top:1%;  left:27%; width:46%; height:42%; }
+  .z-move  { top:15%; left:1%;  width:46%; height:42%; }
+  .z-bloom { top:15%; left:53%; width:46%; height:42%; }
+  .z-rest  { top:40%; left:8%;  width:46%; height:42%; }
+  .z-work  { top:40%; left:46%; width:46%; height:42%; }
+  p.tag{color:#6B6460;font-size:13px;margin-top:22px;text-align:center;font-style:italic}
+  #toast{position:fixed;left:50%;bottom:36px;transform:translate(-50%,12px);background:#2A2420;color:#F6F4F1;padding:10px 18px;border-radius:999px;font-family:'Palatino Linotype',serif;font-size:13px;opacity:0;transition:all .25s ease;pointer-events:none;white-space:nowrap}
+  #toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body>
-  <img class="logo" src="logo.png" alt="Ciclo Sync — Eat, Move, Rest, Work, Bloom">
-  <div class="row">
-    <a class="sphere eat" href="eat.html">EAT</a>
-    <a class="sphere move" href="move.html">MOVE</a>
-    <span class="soon">REST · WORK · BLOOM — coming</span>
+  <div class="stage">
+    <img src="logo.png" alt="Ciclo Sync — Eat, Move, Rest, Work, Bloom">
+    <a class="zone z-eat"   href="eat.html"  aria-label="Enter Eat"></a>
+    <a class="zone z-move"  href="move.html" aria-label="Enter Move"></a>
+    <a class="zone z-bloom" href="#" data-soon="🌸 Bloom is being built — soon" aria-label="Bloom, coming soon"></a>
+    <a class="zone z-rest"  href="#" data-soon="🌙 Rest is being built — soon" aria-label="Rest, coming soon"></a>
+    <a class="zone z-work"  href="#" data-soon="💼 Work is being built — soon" aria-label="Work, coming soon"></a>
   </div>
-  <p>Live with your cycle. Your data never leaves your pocket.</p>
-  <script>if("serviceWorker" in navigator && location.protocol.startsWith("http")){navigator.serviceWorker.register("./sw.js").catch(()=>{});}</script>
+  <p class="tag">Live with your cycle. Your data never leaves your pocket.</p>
+  <div id="toast"></div>
+  <script>
+    var toast = document.getElementById('toast'), t;
+    document.querySelectorAll('[data-soon]').forEach(function(el){
+      el.addEventListener('click', function(ev){
+        ev.preventDefault();
+        toast.textContent = el.getAttribute('data-soon');
+        toast.classList.add('show');
+        clearTimeout(t); t = setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+      });
+    });
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      navigator.serviceWorker.register("./sw.js").catch(function(){});
+    }
+  </script>
 </body>
 </html>
