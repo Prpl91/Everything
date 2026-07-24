@@ -1,0 +1,1 @@
+{"name": "Ciclo Sync \u00b7 Move", "short_name": "Move", "start_url": "./move.html", "scope": "./", "display": "standalone", "background_color": "#EEECEA", "theme_color": "#5B3FA6", "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]}

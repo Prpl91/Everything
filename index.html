@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5B3FA6">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Ciclo Sync</title>
+<style>
+  body{margin:0;min-height:100vh;background:#EEECEA;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Georgia,'Palatino Linotype',serif;padding:24px;box-sizing:border-box}
+  .logo{width:min(78vw,420px);height:auto;display:block}
+  .row{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap;justify-content:center}
+  a.sphere{text-decoration:none;padding:14px 30px;border-radius:999px;font-size:17px;font-weight:700;letter-spacing:.04em;box-shadow:0 3px 10px rgba(42,36,32,.12)}
+  .eat{background:#BFE3A0;color:#2A2420}
+  .move{background:#F2A09B;color:#2A2420}
+  .soon{background:#DEDBD7;color:#9E9A96;padding:14px 22px;border-radius:999px;font-size:14px}
+  p{color:#6B6460;font-size:13px;margin-top:26px;text-align:center;font-style:italic}
+</style>
+</head>
+<body>
+  <img class="logo" src="logo.png" alt="Ciclo Sync — Eat, Move, Rest, Work, Bloom">
+  <div class="row">
+    <a class="sphere eat" href="eat.html">EAT</a>
+    <a class="sphere move" href="move.html">MOVE</a>
+    <span class="soon">REST · WORK · BLOOM — coming</span>
+  </div>
+  <p>Live with your cycle. Your data never leaves your pocket.</p>
+  <script>if("serviceWorker" in navigator && location.protocol.startsWith("http")){navigator.serviceWorker.register("./sw.js").catch(()=>{});}</script>
+</body>
+</html>
