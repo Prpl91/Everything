@@ -1,1 +1,25 @@
-{"name": "Ciclo Sync \u00b7 Eat", "short_name": "Eat", "start_url": "./eat.html", "scope": "./", "display": "standalone", "background_color": "#EEECEA", "theme_color": "#5B3FA6", "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]}
+{
+  "name": "Ciclo Sync \u00b7 Eat",
+  "short_name": "Eat",
+  "description": "Cycle-synced meals, recipes, and Today's Plate \u2014 Caribbean and global.",
+  "start_url": "./eat.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EEECEA",
+  "theme_color": "#5B3FA6",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

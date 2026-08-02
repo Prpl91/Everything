@@ -1,5 +1,7 @@
-const C = "ciclo-v4";
-const CORE = ["./","./index.html","./move.html","./eat.html","./bloom.html","./bloom.webmanifest","./icon-192.png","./icon-512.png","./logo.png"];
+const C = "ciclo-v5";
+const CORE = ["./","./index.html","./eat.html","./move.html","./bloom.html",
+   "./eat.webmanifest","./move.webmanifest","./bloom.webmanifest",
+   "./icon-192.png","./icon-512.png","./logo.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(CORE)));
